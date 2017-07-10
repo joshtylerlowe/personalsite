@@ -1,0 +1,134 @@
+﻿body {
+    background-color: #212121;
+    color: #EEE;
+    font-family: sans-serif;
+}
+
+.justify {
+    text-align: justify;
+}
+
+#banner {
+	height:400px;
+	position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-image:url('../internal_site_images/banner.jpg');
+}
+
+#banner a {
+	color: white;
+	text-decoration:none;
+}
+
+#banner #links {
+	position:absolute;
+	top:40px;
+	left:40px;
+}
+
+#banner #links span {
+	margin: 20px;
+}
+
+#banner #links span.selected {
+	padding:10px;
+	border:medium white solid;
+    cursor: default;
+}
+
+#banner #title {
+	text-align:center;
+	height:200px;
+	margin:auto;
+}
+
+#banner #hi {
+	margin-top: 150px;
+	font-size: 25px;
+}
+
+#banner #profession {
+	font-size:50px;
+	font-weight:bold;
+}
+
+#banner #contact {
+    margin-top: 150px;
+    font-size:50px;
+	font-weight:bold;
+}
+
+#main {
+	position:absolute;
+	text-align:center;
+	top:400px;
+	width: 600px;
+	left: 50%;
+	margin-left: -300px;
+}
+
+#main > div {
+	margin-bottom:100px;
+}
+
+#main h1 {
+	font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+	font-weight:lighter;
+}
+
+#main p {
+	line-height:1.5;
+}
+
+#main .button {
+	margin: auto;
+	width: 100px;
+	border: 2px solid white;
+	padding: 10px;	
+	cursor: pointer;
+    color: white;
+}
+
+#main .button:hover {
+	background: white;
+	color:black;
+}
+
+#main a {
+    text-decoration: none;
+}
+
+div.email {
+    border: 2px solid white;
+    padding: 25px;
+    margin-top: 25px;
+    text-align: left;
+    width: 100%;
+}
+
+div .email-input {
+    width: 300px;
+    margin-bottom: 10px;
+}
+
+div .email-textarea {
+    resize: vertical;
+    height: 100px;
+    max-height: 350px;
+    width: 100%;
+}
+
+div button#email-submit {
+    font-weight: bold;
+}
+
+.noselect {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="styling.css">
+    <script src="http://code.jquery.com/jquery-1.10.1.js"></script>
+    <script src="handlebars-v1.1.2.js"></script>
+    <title>Josh Lowe - Projects</title>
+
+    <script>
+
+        $(function() {
+
+            var projectData = {
+                projects:[
+                    {
+                        'name': 'BSU Campus Map',
+                        text: 'Take a personal tour of campus featuring over 75 buildings and more than 200 hot destinations. Explore every corner of Ball State University in Muncie, Indiana, and navigate the college experience from the palm of your hand. Features a searchable list of buildings, departments, and landmarks.',
+                        icon: 'bsu_map_app.png',
+                        link: 'https://play.google.com/store/apps/details?id=edu.bsu.campusmap&hl=en',
+                        type: 'Android'
+                    },
+                    {
+                        'name': 'BSU Campus Map',
+                        text: 'Take a personal tour of campus featuring over 75 buildings and more than 200 hot destinations. Explore every corner of Ball State University in Muncie, Indiana, and navigate the college experience from the palm of your hand. Features a searchable list of buildings, departments, and landmarks.',
+                        icon: 'bsu_map_app.png',
+                        link: 'https://itunes.apple.com/us/app/ball-state-university-campus/id353148218?mt=8',
+                        type: 'iOS'
+                    },
+                    {
+                        'name': 'BSU Rec App',
+                        text: 'The Ball State University Recreation Services App helps students, faculty, staff, alumni and guests identify if their favorite recreation facilities are busy. Updated in real time, there\'s no need to waste time heading to the gym only to find it too crowded. The Rec app helps you easily identify how busy all areas of the Student Recreation & Wellness Center, Ball Gymnasium, and Lewellen Pool are. Go when you feel comfortable, knowing you will get the most out of your workout',
+                        icon: 'bsu_rec_app.png',
+                        link: 'https://play.google.com/store/apps/details?id=air.edu.bsu.rec&hl=en',
+                        type: 'Android'
+                    },
+                    {
+                        'name': 'Ball State Chirper',
+                        text: 'The Chirper allows Ball State University sports fans to intimidate opponents by shaking phones and tablets... Go Cards! Chirp Chirp!',
+                        icon: 'bsu_chirper_app.png',
+                        link: 'https://play.google.com/store/apps/details?id=edu.bsu.ballstatechirper&hl=en',
+                        type: 'Android'
+                    },
+                    {
+                        'name': 'DNR State Parks History App',
+                        text: '',
+                        icon: 'indiana_park_icon.png',
+                        link: 'http://www.in.gov/activecalendar_dnr/EventList.aspx?view=EventDetails&eventidn=6386&information_id=12854&type=&syndicate=syndicate',
+                        type: 'Android'
+                    },
+                    {
+                        'name': 'DNR State Parks History App',
+                        text: '',
+                        icon: 'indiana_park_icon.png',
+                        link: 'http://www.in.gov/activecalendar_dnr/EventList.aspx?view=EventDetails&eventidn=6386&information_id=12854&type=&syndicate=syndicate',
+                        type: 'iOS'
+                    },
+                    {
+                        'name': 'Minesweeper',
+                        text: 'A standard game of minesweeper created from scratch by myself for Android and free to download to look at my source code.',
+                        icon: 'headshot_old.jpg',
+                        link: 'zips/Minesweeper.zip',
+                        type: 'Android'
+                    },
+                    {
+                        'name': 'BSU Rec Admin Website',
+                        text: 'The BSU Rec App has a back end that pulls card swipe data from the school\'s database and then processes the data to be analyzed and spit out JSON to the mobile applications. Because this is an admin site, the link takes you to the publicly visible page displayed on TVs in the Recreation Center.',
+                        icon: 'bsu_rec_app.png',
+                        link: 'http://web.et.bsu.edu/2013/recreation/tv',
+                        type: 'Web'
+                    },
+                    {
+                        'name': 'Corps Commander',
+                        text: 'Corps Commander is a tool that the Digital Corps uses to manage projects we are working or will be working on soon and display them in a way we can show off publicly. The link takes you to the public page.',
+                        icon: 'digital_corps_icon.png',
+                        link: 'http://web.et.bsu.edu/cc/public.php',
+                        type: 'Web'
+                    },
+                    {
+                        'name': 'Infrared Sensor',
+                        text: 'The Ball State University Human Performance Lab needed an innovative trigger and response system to conduct their latest round of research. Using a system of sensors and triggers, Ball State\'s Digital Corp created a custom solution to make testing simple.',
+                        icon: 'digital_corps_icon.png',
+                        link: 'http://vimeo.com/channels/digitalcorps/58578971',
+                        type: 'Other'
+                    }
+                ],
+                types:[
+                        'Android',
+                        'iOS',
+                        'Web',
+                        'Other'
+                ]
+            };
+
+            var detailsTemplate = Handlebars.compile($('#details-template').html());
+
+            var projectTemplate = Handlebars.compile($('#projects-template').html());
+            Handlebars.registerPartial('project', $('#project-partial').html());
+            Handlebars.registerHelper('ifMatchesType', ifMatchesType);
+
+            $('#projects').html(projectTemplate(projectData));
+
+            $('#projects').on('click', '.project', function(){
+                var projectName = $(this).attr('title');
+                $.each(projectData.projects, function(index, value) {
+                    if (value.name == projectName) {
+                        $('#details').html(detailsTemplate(value));
+                    }
+                });
+            });
+
+            function ifMatchesType(projectType, thisProjectTypes, block) {
+
+                if (projectType == thisProjectTypes) {
+                    return block.fn(this);
+                }
+                return block.inverse(this);
+            }
+
+        });
+
+    </script>
+
+</head>
+<body>
+
+<script id="details-template" type="text/x-handlebars-template">
+    <h4>{{name}}</h4>
+    <p class="project_text">{{text}}</p>
+    <a href="{{link}}" target="_blank">Take a look</a>
+</script>
+
+<script id="project-partial" type="text/x-handlebars-template">
+    <li class="project" title="{{name}}"><img class="project_icon" src="internal_site_images/{{icon}}"></li>
+</script>
+
+<script id="projects-template" type="text/x-handlebars-template">
+    {{#each types}}
+    <h4>{{this}}</h4>
+    <ul class="project_section ui-selectable">
+        {{#each ../projects}}
+            {{#ifMatchesType ../this this.type}}
+                {{> project}}
+            {{/ifMatchesType}}
+        {{/each}}
+    </ul>
+    {{/each}}
+</script>
+
+
+
+<header>
+    Josh Lowe
+    <h4>Software Developer</h4>
+</header>
+
+<div class="full_screen_break"></div>
+
+<nav>
+    <a href="index.html">About</a>
+    <a href="#" style="color: #FF0000">Projects</a>
+    <a href="contact.html">Contact</a>
+</nav>
+
+<div class="full_screen_break"></div>
+<div id="main_body">
+
+    <div id="details"></div>
+
+    <div id="projects"></div>
+</div>
+</body>
+</html>

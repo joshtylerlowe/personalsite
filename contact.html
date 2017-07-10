@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head lang="en">
+        <meta name="viewport" content="width=device-width, user-scalable=no">
+        <link rel="stylesheet" type="text/css" href="styling/styling.css">
+        <script type="text/javascript" src="scripts/jquery-1.11.3.min.js"></script>
+        <script type="text/javascript" src="scripts/jquery-migrate-1.2.1.min.js"></script>
+        <script type="text/javascript" src="scripts/contact.js"></script>
+        <title>Josh Lowe - Contact</title>
+    </head>
+    <body>
+
+        <div id="banner">
+            <div id="links">
+                <span>
+                    <a href="index.html">Home</a>
+                </span>
+                <span class="selected">
+                    Contact
+                </span>
+            </div>
+            <div id="title">
+                <div id="contact">Contact Josh Lowe</div>
+            </div>
+        </div>
+        <div id="main">
+            
+            <div class="email">
+                <input id="email-name" class="email-input" type="text" placeholder="Your Name"><br>
+                <input id="email-emailaddress" class="email-input" type="text" placeholder="Your Email Address"><br>
+                <input id="email-company" class="email-input" type="text" placeholder="Company"><br>
+                <textarea class="email-textarea" type="text"></textarea><br><br>
+                <div style="height: 30px;"><button id="email-submit" disabled="disabled" style="display: none;" onclick="sendMail(); return false;">Send</button></div><br>
+                <label style="margin-bottom: 10px;">I am not a robot.<input id="email-checkbox" type="checkbox"></label>
+            </div>
+            
+            <p id="email-mobile-link" style="display: none;">Send me an <a href="#" onclick="window.location='mailto:joshtylerlowe@gmail.com'; return false;">email</a>.</p>
+            
+            <p>Here is my resume.</p>
+            <a href="Josh%20Lowe%20Resume.pdf" target="_blank"><img src="internal_site_images/resume_screenshot.png" /></a>
+            <p style="margin-top: 20px;">Or maybe you prefer <a href="textresume.html">text</a>?</p>
+            
+            <a href="http://www.linkedin.com/in/joshtylerlowe" target="_blank"><img src="external_site_images/linkedin.png" height="50" width="50"></a>
+
+        </div>
+    </body>
+
+</html>
